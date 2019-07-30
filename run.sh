@@ -11,7 +11,7 @@ IMAGE=dev:latest
 NAME=$HOSTNAME
 
 sudo docker network create --subnet=$SUBNET.0/16 $NET
-
+sudo docker rm $NAME
 sudo docker run \
 -d \
 --add-host=vps:$VPS_IP \
