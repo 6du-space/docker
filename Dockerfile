@@ -28,7 +28,7 @@ RUN ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN dpkg-reconfigure -f noninteractive tzdata
 RUN mkdir -p /run/sshd
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-RUN (echo "#分　时　日　月　周　命令\n#第1列表示分钟1～59 每分钟用*或者 */1表示\n#第2列表示小时1～23（0表示0点）\n#第3列表示日期1～31\n#第4列表示月份1～12\n#第5列标识号星期0～6（0表示星期天）\n#第6列要运行的命令\n\n3 3 * * 6 zsh -c 'DISABLE_AUTO_UPDATE=true && export ZSH=$HOME/.oh-my-zsh && source $ZSH/oh-my-zsh.sh && upgrade_oh_my_zsh 2>&1' >> /dev/null") | crontab -
+RUN (echo -e "#分　时　日　月　周　命令\n#第1列表示分钟1～59 每分钟用*或者 */1表示\n#第2列表示小时1～23（0表示0点）\n#第3列表示日期1～31\n#第4列表示月份1～12\n#第5列标识号星期0～6（0表示星期天）\n#第6列要运行的命令\n\n3 3 * * 6 zsh -c 'DISABLE_AUTO_UPDATE=true && export ZSH=$HOME/.oh-my-zsh && source $ZSH/oh-my-zsh.sh && upgrade_oh_my_zsh 2>&1' >> /dev/null") | crontab -
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2
 RUN update-alternatives --set python /usr/bin/python2.7
