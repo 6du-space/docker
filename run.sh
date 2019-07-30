@@ -6,7 +6,7 @@ NET=6du
 IP=100
 SUBNET=172.20.0
 VPS_IP=$SUBNET.1
-IMAGE=6dus/6du-dev
+IMAGE=daocloud.io/6dus/6du-dev
 #IMAGE=dev:latest
 NAME=$HOSTNAME
 
