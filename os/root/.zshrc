@@ -66,10 +66,10 @@ plugins=(
   git
 )
 
+source $ZSH/oh-my-zsh.sh
 if [ -f ~/.bash_aliases ]; then
 . ~/.bash_aliases
 fi
-source $ZSH/oh-my-zsh.sh
 
 # 打印颜色表
 # for code in {000..255}; do print -P -- "$code: %F{$code}Color%f"; done
@@ -111,3 +111,6 @@ if [ -f ~/.tmux_default ]; then
 . ~/.tmux_default > /dev/null 2>&1
 fi
 
+if [ -f ~/.bash_profile ]; then
+. ~/.bash_profile
+fi
