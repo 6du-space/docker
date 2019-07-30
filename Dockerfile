@@ -4,9 +4,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 ENV PATH="~/.cargo/bin:~/.yarn/bin:~/.config/yarn/global/node_modules/.bin:${PATH}"
 RUN apt-get update && apt-get install --assume-yes apt-utils
-RUN apt-get install -y git 
-RUN apt remove cmdtest
-RUN apt-get install -y software-properties-common curl wget sudo rsync
+RUN apt-get install -y git software-properties-common curl wget sudo rsync libssl-dev pkg-config cmake
 # RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 # RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 #RUN add-apt-repository ppa:neovim-ppa/stable -y
@@ -15,7 +13,6 @@ RUN apt-get install -y software-properties-common curl wget sudo rsync
 #RUN add-apt-repository ppa:deadsnakes/ppa -y
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y libssl-dev pkg-config cmake
 ENV RUSTUP_HOME=/usr/local
 ENV CARGO_HOME=/usr/local
 #ENV RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
