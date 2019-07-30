@@ -22,6 +22,7 @@ rm /etc/apt/sources.list.d/pgdg.list
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 sudo apt-get update
 sudo apt install pgadmin4 -y
+pip3 install gunicorn
 
 sudo -u postgres psql -U postgres -d postgres -c "alter user $DB_USER with password '$PASSWORD';"
 
