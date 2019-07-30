@@ -2,4 +2,4 @@
 
 cd $(dirname "$0")
 
-docker build -t dev .
+sudo docker build -t dev .
