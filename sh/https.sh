@@ -9,10 +9,12 @@ cd $_dir
 
 acme=$HOME/.acme.sh/acme.sh
 
-
 if [ ! -x "$acme" ]; then
 curl https://get.acme.sh | sh
 fi
+
+export BRANCH=dev
+$acme --upgrade
 
 if [ -f "$HOME/.acme.sh/$HOST/fullchain.cer" ]; then
 echo "更新 $HOST"
