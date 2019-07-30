@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+_dirname=$(realpath $(cd "$(dirname "$0")"; pwd))
+
+cd $_dirname
+
 if [ ! -f /etc/init.d/postgresql ]; then
 sudo apt-get install postgresql -y
 sudo apt-get install postgresql-client -y
@@ -23,9 +27,12 @@ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`
 sudo apt-get update
 sudo apt install pgadmin4 -y
 
+mkdir -p /home/pgadmin4/.pgadmin
+sudo chown -R www:www /home/pgadmin4
+
 cat > /usr/share/pgadmin4/web/config_local.py <<EOF
 import os
-DATA_DIR = os.path.realpath(os.path.expanduser(u'~/.pgadmin/'))
+DATA_DIR = os.path.realpath(u'/home/pgadmin4/.pgadmin/')
 LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
 SQLITE_PATH = os.path.join(DATA_DIR, 'pgadmin4.db')
 SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
@@ -37,6 +44,10 @@ EOF
 pip3 install gunicorn
 
 sudo -u postgres psql -U postgres -d postgres -c "alter user $DB_USER with password '$PASSWORD';"
+
+cd /etc/supervisor/conf.d
+ln -s $_dirname/supervisor/*.conf .
+sudo supervisorctl reload
 
 echo -e "\n用户名 $DB_USER"
 echo -e "数据库 $DB_NAME"
