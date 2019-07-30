@@ -16,6 +16,6 @@
 
 # ulimit -c 0
 # ulimit -n 8192
-/etc/init.d/cron start
+# /etc/init.d/cron start
 exec supervisord -n -c /etc/supervisor/supervisord.conf
 exit 0
