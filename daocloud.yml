@@ -1,4 +1,4 @@
-version: 4
+version: 1
 stages:
 - 构建阶段
 - 发布阶段
@@ -11,7 +11,7 @@ stages:
     - .*
     tags:
     - .*
-  build_dir: /
+  build_dir: /dev
   cache: true 
-  dockerfile_path: /Dockerfile
+  dockerfile_path: /dev/Dockerfile
 
