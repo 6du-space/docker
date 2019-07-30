@@ -24,8 +24,7 @@ RUN cargo install exa --root /usr/local
 RUN cargo install tealdeer --root /usr/local
 RUN cargo install sd fd-find tokei diskus ripgrep --root /usr/local
 RUN apt-get install -y apt-utils
-RUN apt-get install --allow-unauthenticated -y 
-RUN jq zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag 
+RUN apt-get install --allow-unauthenticated -y jq zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag 
 RUN tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl 
 RUN python3.7 python3.7-dev python-pip tzdata postgresql-client lsof iputils-ping whois ncdu
 RUN gem install gist jq
