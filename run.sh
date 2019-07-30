@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+SSH_PORT=1000
+let "PORT_BEGIN=SSH_PORT+1"
+let "PORT_END=SSH_PORT+1000"
+PORT_RANGE=$PORT_BEGIN-$PORT_END
 
-PORT_RANGE="1000-2000"
 HOSTNAME=dev
 NET=6du
 IP=100
@@ -16,6 +19,7 @@ sudo docker run \
 -d \
 --add-host=vps:$VPS_IP \
 -p $PORT_RANGE:$PORT_RANGE \
+-p $SSH_PORT:22 \
 -v /var/log/docker/$NAME:/var/log \
 -v /mnt/docker/$NAME/home:/home \
 -v /mnt/docker/$NAME/root:/root \
