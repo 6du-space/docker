@@ -23,7 +23,8 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 RUN cargo install exa --root /usr/local
 RUN cargo install tealdeer --root /usr/local
 RUN cargo install sd fd-find tokei diskus ripgrep --root /usr/local
-RUN apt-get install --allow-unauthenticated -y jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl lsof iputils-ping whois ncdu gem install gist jq tzdata postgresql-client 
+RUN apt-get install -y jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby 
+RUN apt-get install -y locales libpq-dev rpl lsof iputils-ping whois ncdu gem install gist jq tzdata postgresql-client 
 RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip 
 RUN locale-gen zh_CN.UTF-8
 RUN update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
