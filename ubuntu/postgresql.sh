@@ -22,6 +22,18 @@ rm /etc/apt/sources.list.d/pgdg.list
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
 sudo apt-get update
 sudo apt install pgadmin4 -y
+
+cat > /usr/share/pgadmin4/web/config_local.py <<EOF
+import os
+DATA_DIR = os.path.realpath(os.path.expanduser(u'~/.pgadmin/'))
+LOG_FILE = os.path.join(DATA_DIR, 'pgadmin4.log')
+SQLITE_PATH = os.path.join(DATA_DIR, 'pgadmin4.db')
+SESSION_DB_PATH = os.path.join(DATA_DIR, 'sessions')
+STORAGE_DIR = os.path.join(DATA_DIR, 'storage')
+SERVER_MODE = False
+EOF
+
+
 pip3 install gunicorn
 
 sudo -u postgres psql -U postgres -d postgres -c "alter user $DB_USER with password '$PASSWORD';"
