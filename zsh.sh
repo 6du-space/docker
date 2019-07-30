@@ -1,1 +1,1 @@
-docker exec -it dev timeout 24h zsh
+sudo docker exec -it dev timeout 24h zsh

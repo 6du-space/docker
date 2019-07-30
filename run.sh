@@ -6,12 +6,13 @@ NET=6du
 IP=100
 SUBNET=172.20.0
 VPS_IP=$SUBNET.1
-IMAGE=6dus/6du-dev
+#IMAGE=6dus/6du-dev
+IMAGE=dev:latest
 NAME=$HOSTNAME
 
-docker network create --subnet=$SUBNET.0/16 $NET
+#sudo docker network create --subnet=$SUBNET.0/16 $NET
 
-docker run \
+sudo docker run \
 -d \
 --add-host=vps:$VPS_IP \
 -p $PORT_RANGE:$PORT_RANGE \
@@ -24,7 +25,6 @@ docker run \
 --name $NAME \
 --net $NET \
 --ip $SUBNET.$IP \
---device /dev/fuse\
---cap-add SYS_ADMIN\
---restart=always \
-$IMAGE
+--device /dev/fuse \
+--cap-add SYS_ADMIN \
+--restart=always $IMAGE

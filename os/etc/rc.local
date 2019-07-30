@@ -4,5 +4,6 @@ mkdir -p /var/log/supervisor
 mkdir -p /var/log/redis
 chown redis:redis /var/log/redis
 rsync -av /root.init /root
+rcLocal=$(cat /etc/rc.local.init)
 mv /etc/rc.local.init /etc/rc.local
-source /etc/rc.local
+sh -c $rcLocal
