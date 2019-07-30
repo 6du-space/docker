@@ -66,8 +66,9 @@ plugins=(
   git
 )
 
-
-. ~/.bash_aliases 
+if [ -f ~/.bash_aliases ]; then
+. ~/.bash_aliases
+fi
 source $ZSH/oh-my-zsh.sh
 
 # 打印颜色表
@@ -104,13 +105,9 @@ export PROMPT="%F{008}%m%f %F{008}$USER%f ${PROMPT}"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
+. $HOME/.asdf/asdf.sh
 
-
-if [ -f ~/.bash_profile ]; then
-    . ~/.bash_profile
-fi
 if [ -f ~/.tmux_default ]; then
-    ~/.tmux_default > /dev/null 2>&1
+. ~/.tmux_default > /dev/null 2>&1
 fi
-
 
