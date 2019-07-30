@@ -15,10 +15,15 @@ PASSWORD=`openssl rand -base64 128|tr -dc A-Za-z0-9|tail -c20`
 
 DB_HOST=127.0.0.1
 
+mkdir -p ~/git
+cd ~/git
+git clone git://git.postgresql.org/git/postgresql.git --depth=1
+cd pgadmin4/web
+
+sudo -u postgres psql -U postgres -d postgres -c "alter user $DB_USER with password '$PASSWORD';"
+
 echo -e "\n用户名 $DB_USER"
 echo -e "数据库 $DB_NAME"
 echo -e "密码 $PASSWORD\n"
 echo -e "\n访问命令\npsql postgresql://$DB_USER:$PASSWORD@$DB_HOST/$DB_NAME\n"
-
-sudo -u postgres psql -U postgres -d postgres -c "alter user $DB_USER with password '$PASSWORD';"
 
