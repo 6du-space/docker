@@ -1,0 +1,7 @@
+#!/bin/sh -e
+
+mkdir -p /var/log/supervisor
+mkdir -p /var/log/redis
+chown redis:redis /var/log/redis
+mv /etc/rc.local.init /etc/rc.local
+source /etc/rc.local

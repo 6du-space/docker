@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+find . -name .git -type d -execdir sh -c 'echo "\n\033[1;32m>> $(pwd)\033[0m\n"&&git pull -v && git pull origin master && git merge master' ";"
+

@@ -1,0 +1,17 @@
+version: 4
+stages:
+- 构建阶段
+- 发布阶段
+默认构建任务:
+  label: release-image
+  stage: 构建阶段
+  job_type: image_build
+  only:
+    branches:
+    - .*
+    tags:
+    - .*
+  build_dir: /
+  cache: true 
+  dockerfile_path: /Dockerfile
+
