@@ -40,8 +40,9 @@ RUN pip2 install supervisor
 RUN pip3 install virtualenv ipython pipenv xonsh
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 RUN cd ~/.asdf && git checkout "$(git describe --abbrev=0 --tags)"
-RUN . ~/.asdf/asdf.sh && asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring && nodejs-version=`asdf list-all nodejs|tail -n 1` && asdf install nodejs $nodejs-version
-RUN asdf global nodejs  $nodejs-version
+RUN . ~/.asdf/asdf.sh 
+RUN asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring 
+RUN nodejsVersion=`asdf list-all nodejs|tail -n 1` && asdf install nodejs $nodejsVersion && asdf global nodejs  $nodejsVersion
 RUN npm install -g yarn && yarn global add livescript prettier npm-check-updates taskbook
 RUN update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 RUN update-alternatives --set vi /usr/bin/nvim
