@@ -13,15 +13,15 @@ if [ ! -x "$acme" ]; then
 curl https://get.acme.sh | sh
 fi
 
-export BRANCH=dev
-$acme --upgrade
+# export BRANCH=dev
+# $acme --upgrade
 
 if [ -f "$HOME/.acme.sh/$HOST/fullchain.cer" ]; then
 echo "更新 $HOST"
-$acme --force --renew -d $HOST -d *.$HOST --log --reloadcmd "supervisorctl restart caddy"
+$acme --use-wget --force --renew -d $HOST -d *.$HOST --log --reloadcmd "supervisorctl restart caddy"
 else
 echo "创建 $HOST"
-$acme --issue --dns dns_ali -d $HOST -d *.$HOST --force --log --reloadcmd "supervisorctl restart caddy"
+$acme --use-wget --issue --dns dns_ali -d $HOST -d *.$HOST --force --log --reloadcmd "supervisorctl restart caddy"
 chgrp www  ~/.acme.sh/ -R
 chmod g+rx ~/.acme.sh/
 chmod g+rx ~/.acme.sh/$HOST
