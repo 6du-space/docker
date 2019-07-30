@@ -57,7 +57,7 @@ RUN nvim +PlugInstall +qall
 RUN tldr --update
 RUN updatedb
 RUN chsh -s /usr/bin/zsh root
-
+RUN mv /root /root.init
 USER root
 
 CMD ["/etc/rc.local"]
