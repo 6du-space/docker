@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 PORT_RANGE="1000-2000"
-HOSTNAME=yf
+HOSTNAME=dev
 NET=6du
 IP=100
 SUBNET=172.20.0
