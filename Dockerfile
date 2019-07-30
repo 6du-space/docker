@@ -18,8 +18,8 @@ RUN apt-get upgrade -y
 RUN apt-get install -y libssl-dev pkg-config cmake
 ENV RUSTUP_HOME=/usr/local
 ENV CARGO_HOME=/usr/local
-ENV RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
-ENV RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
+#ENV RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
+#ENV RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 RUN cargo install exa --root /usr/local
 RUN cargo install tealdeer --root /usr/local
