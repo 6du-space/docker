@@ -1,0 +1,7 @@
+/var/log/caddy/*/*.log {
+  daily 
+  missingok
+  rotate 180
+  compress
+  notifempty
+}
