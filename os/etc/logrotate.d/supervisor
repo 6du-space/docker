@@ -7,6 +7,5 @@
   uncompresscmd /usr/bin/unxz
   compressext .xz
   dateext
-  copytruncate
   notifempty
 }
