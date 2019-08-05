@@ -1,14 +1,28 @@
 [core]
-    quotepath = false
-    editor = vim
+packedGitLimit = 128m
+packedGitWindowSize = 128m
+quotepath = false
+editor = vim
+
 [alias]
-    st = status
-[pull]
-    default = current
-[push]
-    default = current
+st = status
+rpull = pull
+pull = pull
+
+[pack]
+deltaCacheSize = 128m
+packSizeLimit = 128m
+windowMemory = 128m
+
 [http]
-    postBuffer = 524288000
+postbuffer = 5m
+
+[pull]
+default = current
+
+[push]
+default = current
+
 [user]
-	email = -
-	name = -
+email = -
+name = -
