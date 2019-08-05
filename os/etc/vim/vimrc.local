@@ -112,7 +112,7 @@ func FormatRun()
     endif
     if &filetype == 'ls'
         exec "w"
-        exec "!lsc %"
+        exec "!lsc -r livescript-transform-implicit-async/register --no-header %"
     endif
     if &filetype == 'go'
         exec "w"
