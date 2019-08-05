@@ -20,6 +20,8 @@ sudo docker run \
 --add-host=vps:$VPS_IP \
 -p $PORT_RANGE:$PORT_RANGE \
 -p $SSH_PORT:22 \
+-p 80:80 \
+-p 443:443 \
 -v /var/log/docker/$NAME:/var/log \
 -v /mnt/docker/$NAME/home:/home \
 -v /mnt/docker/$NAME/root:/root \

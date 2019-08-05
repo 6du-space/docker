@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo systemctl enable docker.service
+
 # fix wrong driver
 echo '{ "storage-driver": "devicemapper" }' | sudo tee /etc/docker/daemon.json
 sudo systemctl restart docker.service
