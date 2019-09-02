@@ -92,7 +92,7 @@ let g:ale_fix_on_save = 1
 func RunPy2InPy3()
     call system("2to3-3.6 --fix=print --nobackups" . expand('%') . " -w &> /dev/null")
     exec ":e %"
-    exec "!python %"
+    exec "!python3 %"
 endfunc
 
 "定义 FormatRun()
