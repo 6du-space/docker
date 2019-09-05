@@ -15,6 +15,7 @@ RUN apt-get install -y git software-properties-common curl wget sudo rsync libss
 RUN echo "deb http://repo.pritunl.com/stable/apt disco main" > /etc/apt/sources.list.d/pritunl.list 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
 
+
 RUN apt-get update
 RUN apt-get upgrade -y
 ENV RUSTUP_HOME=/usr/local
@@ -25,7 +26,9 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 RUN cargo install exa --root /usr/local
 RUN cargo install tealdeer --root /usr/local
 RUN cargo install sd fd-find tokei diskus --root /usr/local
-RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip jq tzdata postgresql-client locales ncdu gem libpq-dev rpl lsof iputils-ping whois jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby python3-distutils ripgrep logrotate
+
+RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip jq tzdata postgresql-client locales ncdu gem libpq-dev rpl lsof iputils-ping whois jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby python3-distutils ripgrep logrotate pritunl-client
+
 RUN gem install gist
 RUN locale-gen zh_CN.UTF-8
 RUN update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
