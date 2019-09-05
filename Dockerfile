@@ -18,6 +18,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287
 
 RUN apt-get update
 RUN apt-get upgrade -y
+
+RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip jq tzdata postgresql-client locales ncdu gem libpq-dev rpl lsof iputils-ping whois jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby python3-distutils ripgrep logrotate 
+
 ENV RUSTUP_HOME=/usr/local
 ENV CARGO_HOME=/usr/local
 #ENV RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
@@ -27,7 +30,6 @@ RUN cargo install exa --root /usr/local
 RUN cargo install tealdeer --root /usr/local
 RUN cargo install sd fd-find tokei diskus --root /usr/local
 
-RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip jq tzdata postgresql-client locales ncdu gem libpq-dev rpl lsof iputils-ping whois jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby python3-distutils ripgrep logrotate pritunl-client
 
 RUN gem install gist
 RUN locale-gen zh_CN.UTF-8
