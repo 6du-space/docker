@@ -1,4 +1,7 @@
 #export CHOKIDAR_USEPOLLING=yes
+export LANG="zh_CN.UTF-8"
+export LANGUAGE="zh_CN:zh:en_US:en"
+
 export VISUAL="vim"
 export EDITOR="vim"
 alias ag="ag --noaffinity"
