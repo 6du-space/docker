@@ -12,11 +12,8 @@ RUN apt-get install -y git software-properties-common curl wget sudo rsync libss
 #RUN add-apt-repository ppa:jonathonf/vim -y
 #RUN add-apt-repository ppa:deadsnakes/ppa -y
 
-sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
-deb http://repo.pritunl.com/stable/apt disco main
-EOF
-
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
+RUN echo "deb http://repo.pritunl.com/stable/apt disco main" > /etc/apt/sources.list.d/pritunl.list 
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
 
 RUN apt-get update
 RUN apt-get upgrade -y
