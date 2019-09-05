@@ -45,7 +45,7 @@ RUN pip2 install supervisor
 RUN pip3 install virtualenv ipython pipenv xonsh
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 RUN cd ~/.asdf && git checkout "$(git describe --abbrev=0 --tags)"
-RUN . ~/.asdf/asdf.sh && asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring &&  nodejsVersion=`asdf list-all nodejs|tail -n 1` && asdf install nodejs $nodejsVersion && asdf global nodejs  $nodejsVersion && npm install -g yarn livescript prettier npm-check-updates taskbook --unsafe-perm=true --allow-root --scripts-prepend-node-path
+RUN . ~/.asdf/asdf.sh && asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git && bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring &&  nodejsVersion=`asdf list-all nodejs|tail -n 1` && asdf install nodejs $nodejsVersion && asdf global nodejs  $nodejsVersion && npm install -g yarn prettier npm-check-updates taskbook livescript-transform-implicit-async livescript livescript-system --unsafe-perm=true --allow-root --scripts-prepend-node-path
 RUN update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 RUN update-alternatives --set vi /usr/bin/nvim
 RUN update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
