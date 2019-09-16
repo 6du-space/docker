@@ -12,14 +12,15 @@ RUN apt-get install -y git software-properties-common curl wget sudo rsync libss
 #RUN add-apt-repository ppa:jonathonf/vim -y
 #RUN add-apt-repository ppa:deadsnakes/ppa -y
 
-sudo tee /etc/apt/sources.list.d/pritunl.list << EOF
-deb http://repo.pritunl.com/stable/apt disco main
-EOF
+RUN echo "deb http://repo.pritunl.com/stable/apt disco main" > /etc/apt/sources.list.d/pritunl.list 
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv 7568D9BB55FF9E5287D586017AE645C0CF8E292A
 
 RUN apt-get update
 RUN apt-get upgrade -y
+
+RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip jq tzdata postgresql-client locales ncdu gem libpq-dev rpl lsof iputils-ping whois jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby python3-distutils ripgrep logrotate 
+
 ENV RUSTUP_HOME=/usr/local
 ENV CARGO_HOME=/usr/local
 #ENV RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
@@ -28,7 +29,8 @@ RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path
 RUN cargo install exa --root /usr/local
 RUN cargo install tealdeer --root /usr/local
 RUN cargo install sd fd-find tokei diskus --root /usr/local
-RUN apt-get install --allow-unauthenticated -y python3.7 python3.7-dev python-pip jq tzdata postgresql-client locales ncdu gem libpq-dev rpl lsof iputils-ping whois jq zsh openssh-server tmux tree htop cron tree ctags neovim autojump mlocate redis-server ruby python3-distutils ripgrep logrotate
+
+
 RUN gem install gist
 RUN locale-gen zh_CN.UTF-8
 RUN update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
