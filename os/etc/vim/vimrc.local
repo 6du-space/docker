@@ -10,6 +10,7 @@ set nocompatible              " be iMproved, required
 set mouse=
 "filetype off                  " required
 call plug#begin('~/.config/nvim/autoload')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'Valloric/YouCompleteMe'                " 自动补全
 " Plug 'Yggdroot/indentLine'                   " 垂直缩进对齐线
 " Plug 'bling/vim-airline'                     " 底部状态栏

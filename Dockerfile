@@ -60,7 +60,7 @@ COPY os .
 
 # vim配置文件在上面的仓库里面，所以这一行必须放到之后执行
 RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-RUN nvim +PlugInstall +qall
+RUN nvim +PlugInstall +qall;  nvim +'CocInstall coc-json' +qall; nvim +'CocInstall coc-python' +qall; nvim +'CocInstall coc-vetur' +qall
 RUN tldr --update
 RUN updatedb
 RUN chsh -s /usr/bin/zsh root
