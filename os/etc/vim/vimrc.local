@@ -25,7 +25,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'google/yapf', { 'rtp': 'plugins/vim' }
 " Plug 'jlfwong/vim-mercenary'                 " hg插件，支持blame和diff
 " Plug 'kballard/vim-swift'
-" Plug 'tell-k/vim-autopep8'                   " 自动格式化
 " Plug 'ludovicchabant/vim-lawrencium'         " hg插件
 Plug 'cespare/vim-toml'
 Plug 'linkinpark342/xonsh-vim'
@@ -39,7 +38,7 @@ Plug 'digitaltoad/vim-pug',{'for':'pug'}
 Plug 'haya14busa/vim-gtrans',{'for':'markdown'}
 Plug 'ervandew/supertab'                         " supertab 补全
 Plug 'godlygeek/tabular'                         " 自动对齐
-Plug 'hynek/vim-python-pep8-indent',{'for':'py'} " python自动缩进
+Plug 'tell-k/vim-autopep8',{'for':'python'} " python自动缩进
 Plug 'kchmck/vim-coffee-script',{'for':'coffee'} " Coffee-script语法高亮
 Plug 'gkz/vim-ls',{'for':'ls'} " live script 语法高亮
 "Plug 'wavded/vim-stylus' " live script 语法高亮
@@ -408,12 +407,15 @@ nmap mr :MRU<cr>
 "nmap ne :lnext<cr>
 "nmap pe :lprev<cr>
 
+
 autocmd BufWritePre *.py :%s/^\(\s*print\)\s\+\(.*\)/\1(\2)/e
-autocmd BufWritePre *.{vue,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js} :%s/\t/    /ge
-autocmd BufWritePre *.{txt,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js,vue,sass} :%s/\s\+$//e
+autocmd BufWritePre *.py :call Autopep8()
+autocmd BufWritePre *.{vue,ls,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js,pug} :%s/\t/  /ge
+autocmd BufWritePre *.{txt,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js,vue,sass,pug} :%s/\s\+$//e
 au BufWritePre *.html,*.scss,*.css :Autoformat
 autocmd FileType vue syntax sync fromstart
 autocmd BufWritePre *.vue :syntax sync fromstart
+
 
 let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 let g:ale_linters = {'go': ['gometalinter', 'gofmt']}
